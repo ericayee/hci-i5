@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import CanvasDraw from "react-canvas-draw";
 import "./App.css";
 
 class App extends Component {
@@ -7,7 +7,9 @@ class App extends Component {
     super(props);
     this.state = {
       newItem: "",
-      list: []
+      list: [],
+      brushRadius: 10,
+      brushColor: "#663399"
     };
   }
 
@@ -147,6 +149,28 @@ class App extends Component {
               );
             })}
           </ul>
+        </div>
+        <div
+          style={{
+            textAlign: "center",
+            margin: "0 auto"
+          }}
+        >
+          <h3>Feeling overwhelmed? Draw a little to destress!</h3>
+          <CanvasDraw
+            className="canvas-container"
+            ref={canvasDraw => (this.inlineCanvas = canvasDraw)}
+            brushColor={this.state.brushColor}
+            brushRadius={this.state.brushRadius}
+            canvasWidth={"100%"}
+          />
+          <button
+            onClick={() => {
+              this.inlineCanvas.clear();
+            }}
+          >
+            Clear
+          </button>
         </div>
       </div>
     );
