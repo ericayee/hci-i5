@@ -5,7 +5,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 50vh;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,6 +18,93 @@
   color: #61dafb;
 }
 
+.list-container {
+  padding: 50px;
+  margin: "auto";
+}
+
+input {
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 6px 12px;
+  width: auto;
+  height: auto;
+  margin: 5px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-size: 16px;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+.addButton {
+  background: rgba(83,140,198, .6);
+}
+
+.deleteButton {
+  background: rgba(198,84,83, .6);
+}
+
 .canvas-container {
   margin: 0 auto;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin: -10px 0 20px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: darkgrey;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 2px;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent darkgrey transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.eraser-img {
+  width: 20px;
+}
+
+.counter-container {
+  margin: 100px;
+}
+
+iframe {
+  pointer-events:none;
+}
+
+.placeholderDiv {
+  height: 85px;
+}
+
+.surprisebutton {
+
 }

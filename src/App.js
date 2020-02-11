@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CanvasDraw from "react-canvas-draw";
 import "./App.css";
+import eraser from './eraser.svg';
 
 class App extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class App extends Component {
       newItem: "",
       list: [],
       brushRadius: 10,
-      brushColor: "#663399"
+      brushColor: "#663399",
+      counterToggle: true
     };
   }
 
@@ -31,7 +33,7 @@ class App extends Component {
     );
 
     // saves if component has chance to unmount
-    this.saveStaetToLocalStorage();
+    this.saveStateToLocalStorage();
   }
 
   updateInput(key, value) {
@@ -114,15 +116,8 @@ class App extends Component {
           <h1 className="App-title">IS 4300: I5 Gui Implementation</h1>
           <h3>By Erica Yee</h3>
         </header>
-        <div
-          style={{
-            padding: 50,
-            textAlign: "left",
-            maxWidth: 500,
-            margin: "auto"
-          }}
-        >
-          Add an item to the list
+        <div className="list-container">
+          Add your classes for this semester
           <br />
           <input
             type="text"
@@ -131,10 +126,11 @@ class App extends Component {
             onChange={e => this.updateInput("newItem", e.target.value)}
           />
           <button
+            className="addButton"
             onClick={() => this.addItem()}
             disabled={!this.state.newItem.length}
           >
-            &#43; Add
+            +
           </button>
           <br /> <br />
           <ul>
@@ -142,8 +138,10 @@ class App extends Component {
               return (
                 <li key={item.id}>
                   {item.value}
-                  <button onClick={() => this.deleteItem(item.id)}>
-                    Remove
+                  <button
+                    className="deleteButton"
+                    onClick={() => this.deleteItem(item.id)}>
+                    -
                   </button>
                 </li>
               );
@@ -157,6 +155,15 @@ class App extends Component {
           }}
         >
           <h3>Feeling overwhelmed? Draw a little to destress!</h3>
+          <button
+            className="tooltip"
+            onClick={() => {
+              this.inlineCanvas.clear();
+            }}
+          >
+            <img src={eraser} className="eraser-img" alt="eraser" />
+            <span class="tooltiptext">Clear canvas</span>
+          </button>
           <CanvasDraw
             className="canvas-container"
             ref={canvasDraw => (this.inlineCanvas = canvasDraw)}
@@ -164,14 +171,39 @@ class App extends Component {
             brushRadius={this.state.brushRadius}
             canvasWidth={"100%"}
           />
-          <button
-            onClick={() => {
-              this.inlineCanvas.clear();
-            }}
-          >
-            Clear
-          </button>
         </div>
+        <div className="counter-container">
+          <button
+            className="surprisebutton"
+            onClick={() => this.setState({
+              counterToggle: !this.state.counterToggle
+            })}
+            style={this.state.counterToggle ?
+              {backgroundColor: "lightgray"} : {backgroundColor: "lightblue"}
+            }
+          >Surprise me</button>
+          {
+          // <label>
+          //   Show/hide
+          //   <input
+          //     type="checkbox"
+          //     onChange={() => this.setState({counterToggle: !this.state.counterToggle})}
+          //     // defaultChecked={this.state.counterToggle}
+          //     />
+          // </label>
+          }
+
+          {
+            this.state.counterToggle  ?
+            <div className="iframe-container">
+              <h3>Countdown till the end of the semester</h3>
+              <iframe src="https://free.timeanddate.com/countdown/i75ffcsp/n43/cf12/cm0/cu4/ct0/cs1/ca0/co0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fn3/fs100/szw576/szh243/iso2020-04-24T23:59:59/pa5" allowTransparency="true" frameborder="0" width="198" height="59"></iframe>
+            </div>
+            : <div className="placeholderDiv"></div>
+          }
+
+        </div>
+
       </div>
     );
   }
