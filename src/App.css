@@ -177,3 +177,9 @@ iframe {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.credits-container {
+  max-width: 500px;
+  padding: 20px;
+  margin: 0 auto;
+}
