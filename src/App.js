@@ -152,7 +152,7 @@ class App extends Component {
           >
             +
           </button>
-          <ul>
+          <ul className="todos">
             {this.state.list.map(item => {
               return (
                 <li key={item.id}>
@@ -235,6 +235,13 @@ class App extends Component {
 
         </div>
 
+        <div className="credits-container">
+          <h3>Credits</h3>
+            <p>Thanks to Ryan J. Yost's <a href="https://medium.com/hackernoon/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2" target="_blank" rel="noopener noreferrer">Hackernoon article</a> and starter code for how to use the Local Storage web API.</p>
+            <p>Thanks to the team behind <a href="https://embiem.github.io/react-canvas-draw/" target="_blank" rel="noopener noreferrer">React Canvas Draw</a> for their awesome component.</p>
+            <p>Thanks to Joseph Paul for his <a href="https://uselessfacts.jsph.pl/" target="_blank" rel="noopener noreferrer">Random Useless Facts</a> API.</p>
+            <p>Thanks to timeanddate.com for the <a href="https://www.timeanddate.com/clocks/freecountdown.html" target="_blank" rel="noopener noreferrer">Free Countdown Timer for Your Website</a> embed.</p>
+        </div>
       </div>
     );
   }

@@ -26,8 +26,10 @@
   max-width: 500px;
 }
 
-ul {
-  padding: 0;
+.todos {
+  padding-left: 150px;
+  text-align: left;
+  max-width: 200px;
 }
 
 input {
