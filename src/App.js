@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CanvasDraw from "react-canvas-draw";
 import "./App.css";
 import eraser from './eraser.svg';
+import brush from './brush.svg';
 
 class App extends Component {
   constructor(props) {
@@ -9,11 +10,10 @@ class App extends Component {
     this.state = {
       newItem: "",
       list: [],
-      brushRadius: 10,
-      brushColor: "#663399",
       counterToggle: true,
       fact: '',
-      darkChecked: false
+      darkChecked: false,
+      brushColor: "#663399"
     };
   }
 
@@ -112,11 +112,12 @@ class App extends Component {
   }
 
   getFact() {
-    var url = `https://jsonplaceholder.typicode.com/comments/${Math.floor(Math.random(0,500) * 10)}`;
+    // var url = `https://jsonplaceholder.typicode.com/comments/${Math.floor(Math.random(0,500) * 10)}`;
+    var url = 'https://uselessfacts.jsph.pl/random.json?language=en'
     fetch(url)
     .then(res => res.json())
     .then((data) => {
-      document.getElementById("factbox").innerHTML = data['name'];
+      document.getElementById("factbox").innerHTML = data['text'];
       // this.setState({ fact: data['name'] })
       // console.log(data);
     })
@@ -124,28 +125,23 @@ class App extends Component {
 
   }
 
-  // handleChecked() {
-  //   this.setState({darkChecked: !this.state.darkChecked});
-  // }
-
   render() {
 
     return (
-      <div className="App" style={{backgroundColor: this.state.darkChecked ? '#fff' : '#282c34'}}>
-        <header className="App-header">
-          <h1 className="App-title">IS 4300: I5 Gui Implementation</h1>
-          <h3>By Erica Yee</h3>
+      <div className="App">
+        <header className="App-header" style={{backgroundColor: this.state.darkChecked ? '#fff' : '#282c34'}}>
+          <h1 className="App-title" style={{color: this.state.darkChecked ? '#282c34' : '#fff'}}>IS 4300: I5 Gui Implementation</h1>
+          <h3 style={{color: this.state.darkChecked ? '#282c34' : '#fff'}}>By Erica Yee</h3>
         </header>
-        <label>Dark mode?</label>
-        <input type="checkbox" onChange={() =>{
+        <label>Change header theme</label>
+        <input type="checkbox" onChange={() => {
           this.setState({darkChecked: !this.state.darkChecked});
         }}/>
         <div className="list-container">
-          Add a to-do item (these will be saved!):
-          <br />
+          <h3>Add a to-do item (these will be saved!):</h3>
           <input
             type="text"
-            placeholder="Type item here"
+            placeholder="Add item here"
             value={this.state.newItem}
             onChange={e => this.updateInput("newItem", e.target.value)}
           />
@@ -156,7 +152,6 @@ class App extends Component {
           >
             +
           </button>
-          <br /> <br />
           <ul>
             {this.state.list.map(item => {
               return (
@@ -173,12 +168,13 @@ class App extends Component {
           </ul>
         </div>
         <div className="factContainer">
+          <h3>Learn a useless fact</h3>
           <button
             className="factButton"
             onClick={() => {
               this.getFact();
             }}
-          >Try pronouncing some lorem ipsum</button>
+          >Get fact</button>
           <p id="factbox"><br /></p>
         </div>
         <div
@@ -187,45 +183,47 @@ class App extends Component {
             margin: "0 auto"
           }}
         >
-          <h3>Feeling overwhelmed? Draw a little to destress!</h3>
+          <h3>Feeling overwhelmed? Draw a little to destress! <span><img src={brush} className="icon" alt="brush image" /></span></h3>
+          <div class="dropdown">
+           <button class="dropbtn">Choose color</button>
+           <div class="dropdown-content">
+             <a onClick={() => this.setState({
+               brushColor: "#663399"
+             })}>purple</a>
+             <a onClick={() => this.setState({
+               brushColor: "#993399"
+             })}>pink</a>
+             <a onClick={() => this.setState({
+               brushColor: "#333399"
+             })}>blue</a>
+           </div>
+          </div>
           <button
             className="tooltip"
             onClick={() => {
               this.inlineCanvas.clear();
             }}
           >
-            <img src={eraser} className="eraser-img" alt="eraser" />
+            <img src={eraser} className="icon" alt="eraser" />
             <span className="tooltiptext">Clear canvas</span>
           </button>
           <CanvasDraw
             className="canvas-container"
             ref={canvasDraw => (this.inlineCanvas = canvasDraw)}
             brushColor={this.state.brushColor}
-            brushRadius={this.state.brushRadius}
             canvasWidth={"100%"}
           />
         </div>
         <div className="counter-container">
           <button
-            className="surprisebutton"
+            className="surpriseButton"
             onClick={() => this.setState({
               counterToggle: !this.state.counterToggle
             })}
             style={this.state.counterToggle ?
-              {backgroundColor: "lightgray"} : {backgroundColor: "lightblue"}
+              {backgroundColor: "lightgray", border: "1px solid lightgray" } : {backgroundColor: "lightblue", border: "1px solid lightblue" }
             }
           >Surprise me</button>
-          {
-          // <label>
-          //   Show/hide
-          //   <input
-          //     type="checkbox"
-          //     onChange={() => this.setState({counterToggle: !this.state.counterToggle})}
-          //     // defaultChecked={this.state.counterToggle}
-          //     />
-          // </label>
-          }
-
           {
             this.state.counterToggle  ?
             <div className="iframe-container">
