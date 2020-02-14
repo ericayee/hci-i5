@@ -183,19 +183,19 @@ class App extends Component {
             margin: "0 auto"
           }}
         >
-          <h3>Feeling overwhelmed? Draw a little to destress! <span><img src={brush} className="icon" alt="brush image" /></span></h3>
-          <div class="dropdown">
-           <button class="dropbtn">Choose color</button>
-           <div class="dropdown-content">
-             <a onClick={() => this.setState({
+          <h3>Feeling overwhelmed? Draw a little to destress! <span><img src={brush} className="icon" alt="brush" /></span></h3>
+          <div className="dropdown">
+           <button className="dropbtn">Choose color</button>
+           <div className="dropdown-content">
+             <div onClick={() => this.setState({
                brushColor: "#663399"
-             })}>purple</a>
-             <a onClick={() => this.setState({
+             })}>purple</div>
+             <div onClick={() => this.setState({
                brushColor: "#993399"
-             })}>pink</a>
-             <a onClick={() => this.setState({
+             })}>pink</div>
+             <div onClick={() => this.setState({
                brushColor: "#333399"
-             })}>blue</a>
+             })}>blue</div>
            </div>
           </div>
           <button

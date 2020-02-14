@@ -159,7 +159,7 @@ iframe {
 }
 
 /* Links inside the dropdown */
-.dropdown-content a {
+.dropdown-content div {
  color: black;
  padding: 6px 10px;
  text-decoration: none;
