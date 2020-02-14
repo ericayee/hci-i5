@@ -11,7 +11,9 @@ class App extends Component {
       list: [],
       brushRadius: 10,
       brushColor: "#663399",
-      counterToggle: true
+      counterToggle: true,
+      fact: '',
+      darkChecked: false
     };
   }
 
@@ -109,15 +111,37 @@ class App extends Component {
     }
   }
 
+  getFact() {
+    var url = `https://jsonplaceholder.typicode.com/comments/${Math.floor(Math.random(0,500) * 10)}`;
+    fetch(url)
+    .then(res => res.json())
+    .then((data) => {
+      document.getElementById("factbox").innerHTML = data['name'];
+      // this.setState({ fact: data['name'] })
+      // console.log(data);
+    })
+    .catch(console.log)
+
+  }
+
+  // handleChecked() {
+  //   this.setState({darkChecked: !this.state.darkChecked});
+  // }
+
   render() {
+
     return (
-      <div className="App">
+      <div className="App" style={{backgroundColor: this.state.darkChecked ? '#fff' : '#282c34'}}>
         <header className="App-header">
           <h1 className="App-title">IS 4300: I5 Gui Implementation</h1>
           <h3>By Erica Yee</h3>
         </header>
+        <label>Dark mode?</label>
+        <input type="checkbox" onChange={() =>{
+          this.setState({darkChecked: !this.state.darkChecked});
+        }}/>
         <div className="list-container">
-          Add your classes for this semester
+          Add a to-do item (these will be saved!):
           <br />
           <input
             type="text"
@@ -148,6 +172,15 @@ class App extends Component {
             })}
           </ul>
         </div>
+        <div className="factContainer">
+          <button
+            className="factButton"
+            onClick={() => {
+              this.getFact();
+            }}
+          >Try pronouncing some lorem ipsum</button>
+          <p id="factbox"><br /></p>
+        </div>
         <div
           style={{
             textAlign: "center",
@@ -162,7 +195,7 @@ class App extends Component {
             }}
           >
             <img src={eraser} className="eraser-img" alt="eraser" />
-            <span class="tooltiptext">Clear canvas</span>
+            <span className="tooltiptext">Clear canvas</span>
           </button>
           <CanvasDraw
             className="canvas-container"
@@ -197,7 +230,7 @@ class App extends Component {
             this.state.counterToggle  ?
             <div className="iframe-container">
               <h3>Countdown till the end of the semester</h3>
-              <iframe src="https://free.timeanddate.com/countdown/i75ffcsp/n43/cf12/cm0/cu4/ct0/cs1/ca0/co0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fn3/fs100/szw576/szh243/iso2020-04-24T23:59:59/pa5" allowTransparency="true" frameborder="0" width="198" height="59"></iframe>
+              <iframe title="countdown" src="https://free.timeanddate.com/countdown/i75ffcsp/n43/cf12/cm0/cu4/ct0/cs1/ca0/co0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fn3/fs100/szw576/szh243/iso2020-04-24T23:59:59/pa5" allowtransparency="true" frameBorder="0" width="198" height="59"></iframe>
             </div>
             : <div className="placeholderDiv"></div>
           }
