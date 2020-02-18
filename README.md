@@ -20,6 +20,13 @@ Code available at [github.com/ericayee/hci-i5](github.com/ericayee/hci-i5)
 - [x] A pane that allows you to draw lines with the mouse: **drawing canvas**
 - [x] Possible to enter information into the interface, quit the app entirely, restart the app, and have the prior state restored: **to-do items are preserved when page is refreshed or reopened (until cookies are cleared)**
 
+### Credits
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Thanks to Ryan J. Yost's [Hackernoon article](https://medium.com/hackernoon/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2) and starter code for how to use the Local Storage web API.
+- Thanks to the team behind [React Canvas Draw](https://embiem.github.io/react-canvas-draw/) for their awesome component.
+- Thanks to Joseph Paul for his [Random Useless Facts](https://uselessfacts.jsph.pl/) API.
+- Thanks to timeanddate.com for the [Free Countdown Timer for Your Website](https://www.timeanddate.com/clocks/freecountdown.html) embed.
+
 
 ***
 
