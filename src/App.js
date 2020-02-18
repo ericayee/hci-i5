@@ -11,9 +11,10 @@ class App extends Component {
       newItem: "",
       list: [],
       counterToggle: false,
-      fact: '',
+      fact: "",
       darkChecked: false,
-      brushColor: "#663399"
+      brushColor: "#663399",
+      brushLabel: "purple"
     };
   }
 
@@ -194,16 +195,19 @@ class App extends Component {
         >
           <h3>Feeling overwhelmed? Draw a little to destress! <span><img src={brush} className="icon" alt="brush" /></span></h3>
           <div className="dropdown">
-           <button className="dropbtn">Choose color</button>
+           <button className="dropbtn">Choose color:<br /><span>{this.state.brushLabel}</span></button>
            <div className="dropdown-content">
              <div onClick={() => this.setState({
-               brushColor: "#663399"
+               brushColor: "#663399",
+               brushLabel: "purple"
              })}>purple</div>
              <div onClick={() => this.setState({
-               brushColor: "#993399"
+               brushColor: "#993399",
+               brushLabel: "pink"
              })}>pink</div>
              <div onClick={() => this.setState({
-               brushColor: "#333399"
+               brushColor: "#333399",
+               brushLabel: "blue"
              })}>blue</div>
            </div>
           </div>
