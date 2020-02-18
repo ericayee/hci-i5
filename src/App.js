@@ -106,7 +106,6 @@ class App extends Component {
   }
 
   getFact() {
-    // var url = `https://jsonplaceholder.typicode.com/comments/${Math.floor(Math.random(0,500) * 10)}`;
     var url = 'https://uselessfacts.jsph.pl/random.json?language=en'
     fetch(url)
     .then(res => res.json())
@@ -245,9 +244,7 @@ class App extends Component {
             </div>
             : <div className="placeholderDiv"></div>
           }
-
         </div>
-
         <div className="credits-container">
           <h3>Credits</h3>
             <p>This project was bootstrapped with <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener noreferrer">Create React App.</a></p>
