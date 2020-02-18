@@ -1,8 +1,8 @@
 # I5: Individual Assignment #5 – GUI Implementation
 Erica Yee | IS 4300 | yee.er@husky.neu.edu | [ericayee.com/hci/](ericayee.com/hci/)
 
-Web interface available at [ericayee.com/hci-i5](ericayee.com/hci-i5)  
-Code available at [github.com/ericayee/hci-i5](github.com/ericayee/hci-i5)
+Web interface available at [ericayee.com/hci-i5](https://ericayee.com/hci-i5/)  
+Code available at [github.com/ericayee/hci-i5](https://github.com/ericayee/hci-i5/)
 
 ### Requirements
 - [x] A text label: **"Add a to-do item (these will be saved!):"**
