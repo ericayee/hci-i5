@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       newItem: "",
       list: [],
-      counterToggle: true,
+      counterToggle: false,
       fact: '',
       darkChecked: false,
       brushColor: "#663399"
@@ -237,6 +237,7 @@ class App extends Component {
 
         <div className="credits-container">
           <h3>Credits</h3>
+            <p>This project was bootstrapped with <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener noreferrer">Create React App.</a></p>
             <p>Thanks to Ryan J. Yost's <a href="https://medium.com/hackernoon/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2" target="_blank" rel="noopener noreferrer">Hackernoon article</a> and starter code for how to use the Local Storage web API.</p>
             <p>Thanks to the team behind <a href="https://embiem.github.io/react-canvas-draw/" target="_blank" rel="noopener noreferrer">React Canvas Draw</a> for their awesome component.</p>
             <p>Thanks to Joseph Paul for his <a href="https://uselessfacts.jsph.pl/" target="_blank" rel="noopener noreferrer">Random Useless Facts</a> API.</p>
