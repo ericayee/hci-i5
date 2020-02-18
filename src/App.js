@@ -61,10 +61,6 @@ class App extends Component {
       list,
       newItem: ""
     });
-
-    // update localStorage
-    localStorage.setItem("list", JSON.stringify(list));
-    localStorage.setItem("newItem", "")
   }
 
   deleteItem(id) {
@@ -74,9 +70,6 @@ class App extends Component {
     const updatedList = list.filter(item => item.id !== id);
 
     this.setState({ list: updatedList });
-
-    // update LocalStorage
-    localStorage.setItem("list", JSON.stringify(updatedList));
   }
 
   hydrateStateWithLocalStorage() {
@@ -117,12 +110,18 @@ class App extends Component {
     fetch(url)
     .then(res => res.json())
     .then((data) => {
-      document.getElementById("factbox").innerHTML = data['text'];
-      // this.setState({ fact: data['name'] })
-      // console.log(data);
+      // update the state
+      this.setState({
+        fact: data['text']
+      });
     })
     .catch(console.log)
+  }
 
+  clearFact() {
+    this.setState({
+      fact: ''
+    });
   }
 
   render() {
@@ -175,7 +174,17 @@ class App extends Component {
               this.getFact();
             }}
           >Get fact</button>
-          <p id="factbox"><br /></p>
+          <button
+            className="clearFactButton"
+            onClick={() => {
+              this.clearFact();
+            }}
+          >Clear fact</button>
+          <p id="factbox">
+          {
+            this.state.fact ? <span>{this.state.fact}</span> : <br />
+          }
+          </p>
         </div>
         <div
           style={{
